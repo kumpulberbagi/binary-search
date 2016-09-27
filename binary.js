@@ -20,8 +20,20 @@
 var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
+
 function binary_search(search, array) {
-  // Your code here
+  var low = 0
+  var high = array.length - 1
+  while (low <= high){
+    var mid = low + Math.floor(((high - low) / 2))
+    if(array[mid] > search){
+      high = mid - 1
+    }
+    else{
+      low = mid + 1
+    }
+  }
+  return low-1
 }
 
 // Driver code
@@ -31,3 +43,4 @@ console.log(binary_search(10, test_array_a))
 console.log(binary_search(11, test_array_b))
 console.log(binary_search(2, test_array_a))
 console.log(binary_search(2, test_array_b))
+console.log(binary_search(12, test_array_b))
