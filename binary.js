@@ -21,7 +21,20 @@ var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search(search, array) {
-  // Your code here
+
+  var low = array[0];
+  var high = array[array.length - 1];
+  while (low <= high) {
+    var mid = low + Math.floor((high - low) / 2);
+    if (mid === search) {
+      return mid
+    } else if (mid > search) {
+      high = array[mid - 1];
+    } else {
+      low = array[mid + 1];
+    }
+    return array[low];
+  }
 }
 
 // Driver code
@@ -31,3 +44,28 @@ console.log(binary_search(10, test_array_a))
 console.log(binary_search(11, test_array_b))
 console.log(binary_search(2, test_array_a))
 console.log(binary_search(2, test_array_b))
+
+// Your code here
+// var halfArr = array.length;
+// while (halfArr > 1) {
+//   if (halfArr % 2 === 0) {
+//     halfArr /= 2;
+//   } else {
+//     halfArr = Math.floor(halfArr / 2);
+//   }
+//   for (var i = 0; i < halfArr; i++) {
+//     if (array[halfArr] === search) {
+//       return array[halfArr]
+//     }
+//   }
+//   for (var i = 0; i < halfArr; i++) {
+//     if (array[halfArr] < search) {
+//       array = array.slice(0, halfArr);
+//     }
+//   }
+//   for (var i = 0; i < halfArr; i++) {
+//     if (array[halfArr] > search) {
+//       array = array.slice(-halfArr);
+//     }
+//   }
+// }
