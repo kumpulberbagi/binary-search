@@ -4,10 +4,10 @@
 // puts binary_search(135, test_array) == 35
 
 // PSEUDOCODE
-// create a method, binary_search, that takes an object and an array as an input.
-// the object is the number we are testing for to find the index position
-// the array is our data set which we will be comparing our object against to find the index position
-//establish the index position of the element in our array which is the mid-way point in our array (probably by using array.length)
+//  ok create a method, binary_search, that takes an object and an array as an input.
+// ok the object is the number we are testing for to find the index position
+// ok the array is our data set which we will be comparing our object against to find the index position
+// ok establish the index position of the element in our array which is the mid-way point in our array (probably by using array.length)
 // make sure that this works for both even and odd array lengths
 //create a method to cut our array length in half, and determine if our object is higher or lower than the array number at that "half array" index position
 // if our number is exactly the same as the "half array" index number, return the index position of that number in the array.
@@ -19,15 +19,36 @@
 
 var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+var test_array_c = [100,120,130,135,150,170]
+var test_array_d = [13,19,24,29,32,37,43]
 
 function binary_search(search, array) {
   // Your code here
+  var found = false
+  var first = 0
+  var last = array.length-1
+  var mid = Math.floor((first+last)/2)-1
+
+  while(found == false){
+      if(search === array[mid]){
+      found = true
+    } else if (search < array[mid]){
+      last = mid
+      mid = Math.floor((first+last)/2)
+    } else if(search > array[mid]) {
+      first = mid + 1
+      mid = Math.floor((first+last)/2)
+    }
+  }
+  return mid
 }
 
 // Driver code
-console.log(binary_search(5, test_array_a))
-console.log(binary_search(6, test_array_b))
-console.log(binary_search(10, test_array_a))
-console.log(binary_search(11, test_array_b))
-console.log(binary_search(2, test_array_a))
-console.log(binary_search(2, test_array_b))
+console.log("4  | " + binary_search(5, test_array_a))
+console.log("5  | " + binary_search(6, test_array_b))
+console.log("9  | " + binary_search(10, test_array_a))
+console.log("10 | " + binary_search(11, test_array_b))
+console.log("1  | " + binary_search(2, test_array_a))
+console.log("1  | " + binary_search(2, test_array_b))
+console.log("3  | " + binary_search(135, test_array_c))
+// console.log("-1  | " + binary_search(35, test_array_d)) masih error
