@@ -22,6 +22,21 @@ var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search(search, array) {
   // Your code here
+  var indexAwal = 0;
+  var indexAkhir = array.length;
+
+  while(true){
+    var nilaiTengah = Math.floor((indexAwal +  indexAkhir) / 2)
+    if(search == array[nilaiTengah]){
+      return nilaiTengah;
+    }else if(search > array[nilaiTengah]){
+      indexAwal = nilaiTengah;
+    }else{
+      indexAkhir = nilaiTengah
+    }
+  //log(nilaiTengah);
+
+  }
 }
 
 // Driver code
@@ -30,4 +45,4 @@ console.log(binary_search(6, test_array_b))
 console.log(binary_search(10, test_array_a))
 console.log(binary_search(11, test_array_b))
 console.log(binary_search(2, test_array_a))
-console.log(binary_search(2, test_array_b))
+console.log(binary_search(4, test_array_b))
