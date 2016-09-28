@@ -19,21 +19,23 @@
 
 var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+var test_array_c = [3, 8, 10, 12, 14, 18, 25, 30]
 
 function binary_search(search, array) {
 
-  var low = array[0];
-  var high = array[array.length - 1];
+  var low = 0;
+  var high = array.length;
   while (low <= high) {
     var mid = low + Math.floor((high - low) / 2);
-    if (mid === search) {
-      return mid
-    } else if (mid > search) {
-      high = array[mid - 1];
+    if (array[mid] === search) {
+      return array[mid]
+    } else if (array[mid] > search) {
+      high = mid - 1;
+    } else if (array[mid] < search) {
+      low = mid + 1;
     } else {
-      low = array[mid + 1];
+      return "tidak ditemukan dalam data"
     }
-    return array[low];
   }
 }
 
@@ -44,6 +46,7 @@ console.log(binary_search(10, test_array_a))
 console.log(binary_search(11, test_array_b))
 console.log(binary_search(2, test_array_a))
 console.log(binary_search(2, test_array_b))
+console.log(binary_search(10, test_array_c))
 
 // Your code here
 // var halfArr = array.length;
