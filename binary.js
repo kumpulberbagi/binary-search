@@ -21,7 +21,23 @@ var test_array_a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var test_array_b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 function binary_search(search, array) {
-  // Your code here
+    var first = 0
+    var last = array.length - 1
+    var mid = Math.floor((array.length - 1) / 2)
+    var match = false;
+
+    while (match == false) {
+        if (array[mid] == search) {
+            return mid
+        } else if (search > array[mid]) {
+            first = mid + 1
+            mid = Math.floor((first + last) / 2)
+        } else if (search < array[mid]) {
+            first = 0
+            last = mid
+            mid = Math.floor((first + last) / 2)
+        }
+    }
 }
 
 // Driver code
